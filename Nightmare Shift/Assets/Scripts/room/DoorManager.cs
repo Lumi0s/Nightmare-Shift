@@ -1,21 +1,47 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-    private GameObject door;
+    public GameObject door;
+    public GameObject Button;
     public bool isOpen = false;
-    public float slideDistance; // Distance to slide the door
-    public float slideDuration = 1f; // Duration of the slide
-
-    public bool canChangeState = true;
-
+    public float slideDuration = 1f;
+    private BoxCollider buttonCollider;
+    private float slideDistance; 
+    private bool canChangeState = true;
 
     void Start()
     {
-        door = transform.Find("the door").gameObject;
         slideDistance = door.transform.localScale.y;
+        buttonCollider = Button.GetComponent<BoxCollider>();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider == buttonCollider)
+                {
+                    if (canChangeState)
+                    {
+                        if (isOpen)
+                        {
+                            CloseDoor();
+                        }
+                        else
+                        {
+                            OpenDoor();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void OpenDoor()
@@ -53,10 +79,5 @@ public class DoorManager : MonoBehaviour
 
         door.transform.position = endPosition;
         canChangeState = true;
-    }
-
-    void Update()
-    {
-        // You can add input handling here to open/close the door
     }
 }
