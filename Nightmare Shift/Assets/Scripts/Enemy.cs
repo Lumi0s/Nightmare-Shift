@@ -6,13 +6,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float moveInterval = 5.0f;
-    private float timeSinceLastMove = 0.0f;
     public Room currentRoom;
+
+    [Range(0f, 1f)]
+    public float chanceToMove = 0.5f;
+    private float timeSinceLastMove = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize currentRoom if needed
         currentRoom = GetComponentInParent<Room>();
     }
 
@@ -23,7 +25,11 @@ public class Enemy : MonoBehaviour
 
         if (timeSinceLastMove >= moveInterval)
         {
-            move();
+            float random = UnityEngine.Random.Range(0.0f, 1.0f);
+            if (random < chanceToMove)
+            {
+                move();
+            }
             timeSinceLastMove = 0.0f;
         }
     }
@@ -34,7 +40,6 @@ public class Enemy : MonoBehaviour
         if (currentRoom != null)
         {
             currentRoom.moveEnemy(this.gameObject);
-            Debug.Log("Enemy moved to another room");
         }
         else
         {
