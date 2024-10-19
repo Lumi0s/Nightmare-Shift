@@ -5,16 +5,30 @@ public class DoorManager : MonoBehaviour
 {
     public GameObject door;
     public GameObject Button;
+    [SerializeField] private GameObject lightButton;
+    [SerializeField] private GameObject light;
+    [SerializeField] private GameObject mainRoom;
+    [SerializeField] private GameObject sideRoom;
+
     public bool isOpen = false;
     public float slideDuration = 1f;
     private BoxCollider buttonCollider;
+    private BoxCollider lightButtonCollider;
+    private Room mainRoomManager;
+    private Room sideRoomManager;
     private float slideDistance; 
     private bool canChangeState = true;
 
+
     void Start()
     {
-        slideDistance = door.transform.localScale.y;
+        slideDistance = transform.localScale.y;
         buttonCollider = Button.GetComponent<BoxCollider>();
+        lightButtonCollider = lightButton.GetComponent<BoxCollider>();
+        mainRoomManager = mainRoom.GetComponent<Room>();
+        sideRoomManager = sideRoom.GetComponent<Room>();
+        sideRoomManager.connectedRooms.Add(mainRoom);
+
     }
 
     void Update()
@@ -40,6 +54,10 @@ public class DoorManager : MonoBehaviour
                         }
                     }
                 }
+                else if (hit.collider == lightButtonCollider)
+                {
+                    light.SetActive(!light.activeSelf);
+                }
             }
         }
     }
@@ -51,6 +69,7 @@ public class DoorManager : MonoBehaviour
             canChangeState = false;
             StartCoroutine(SlideDoor(Vector3.up * slideDistance));
             isOpen = true;
+            sideRoomManager.connectedRooms.Add(mainRoom);
         }
     }
 
@@ -61,6 +80,7 @@ public class DoorManager : MonoBehaviour
             canChangeState = false;
             StartCoroutine(SlideDoor(Vector3.down * slideDistance));
             isOpen = false;
+            sideRoomManager.connectedRooms.Remove(mainRoom);
         }
     }
 
