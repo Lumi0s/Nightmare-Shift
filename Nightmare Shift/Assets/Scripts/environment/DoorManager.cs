@@ -6,7 +6,7 @@ public class DoorManager : MonoBehaviour
     public GameObject door;
     public GameObject Button;
     [SerializeField] private GameObject lightButton;
-    [SerializeField] private GameObject light;
+    [SerializeField] private GameObject lightObject;
     [SerializeField] private GameObject mainRoom;
     [SerializeField] private GameObject sideRoom;
 
@@ -35,6 +35,7 @@ public class DoorManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (Camera.main == null) {return;}
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -56,7 +57,16 @@ public class DoorManager : MonoBehaviour
                 }
                 else if (hit.collider == lightButtonCollider)
                 {
-                    light.SetActive(!light.activeSelf);
+                    if (lightObject.activeSelf)
+                    {
+                        lightObject.SetActive(!lightObject.activeSelf);
+                        PowerSystem.Instance.usage--;
+                    }
+                    else
+                    {
+                        lightObject.SetActive(!lightObject.activeSelf);
+                        PowerSystem.Instance.usage++;
+                    }
                 }
             }
         }
@@ -70,6 +80,7 @@ public class DoorManager : MonoBehaviour
             StartCoroutine(SlideDoor(Vector3.up * slideDistance));
             isOpen = true;
             sideRoomManager.connectedRooms.Add(mainRoom);
+            PowerSystem.Instance.usage--;
         }
     }
 
@@ -81,6 +92,8 @@ public class DoorManager : MonoBehaviour
             StartCoroutine(SlideDoor(Vector3.down * slideDistance));
             isOpen = false;
             sideRoomManager.connectedRooms.Remove(mainRoom);
+            PowerSystem.Instance.usage++;
+
         }
     }
 

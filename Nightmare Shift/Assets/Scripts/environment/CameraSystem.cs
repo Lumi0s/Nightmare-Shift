@@ -33,6 +33,11 @@ public class CameraSystem : MonoBehaviour
         {
             camerasOpen = !camerasOpen;
             ShowCamera();
+            if(camerasOpen)
+                PowerSystem.Instance.usage++;
+            else
+                PowerSystem.Instance.usage--;
+
         }
     }
 
@@ -50,7 +55,6 @@ public class CameraSystem : MonoBehaviour
             cameras[currentCam].SetActive(false);
             mainCamera.SetActive(true);
             cameraUI.SetActive(false);
-
         }
     }
 
