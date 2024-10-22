@@ -36,24 +36,51 @@ public class Room : MonoBehaviour
             }
             return false;
         });
+
         if (availableRooms.Count == 0) return;
 
-
-        GameObject targetRoom = room ?? availableRooms[Random.Range(0, availableRooms.Count - 1)];
-
-        Debug.Log(targetRoom.name);
-
+        GameObject targetRoom = room ?? availableRooms[Random.Range(0, availableRooms.Count)];
         Room targetRoomComponent = targetRoom.GetComponent<Room>();
 
         enemies.Remove(enemy);
         targetRoomComponent.enemies.Add(enemy);
         enemy.GetComponent<Enemy>().currentRoom = targetRoomComponent;
 
-        Transform targetChild = targetRoom.transform.Find(enemy.tag);
-        Debug.Log(targetChild.name);
-        targetChild.gameObject.SetActive(true);
+        // Find the child of targetRoom with the same tag as the enemy
+        Transform targetChild = null;
+        foreach (Transform child in targetRoom.transform)
+        {
+            if (child.CompareTag(enemy.tag))
+            {
+                targetChild = child;
+                break;
+            }
+        }
+        // Enable the MeshRenderer in the target child
+        MeshRenderer targetMeshRenderer = targetChild.GetChild(0).GetComponent<MeshRenderer>();
+        targetMeshRenderer.enabled = true;
+
+
         enemy.transform.SetParent(targetRoom.transform);
-        this.transform.Find(enemy.tag).gameObject.SetActive(false);
+
+
+        // Disable the MeshRenderer in the previous room's enemy
+
+        Transform enemyFromThisRoom = null;
+        foreach (Transform child in this.transform)
+        {
+            if (child.CompareTag(enemy.tag))
+            {
+                enemyFromThisRoom = child;
+                break;
+            }
+        }
+
+        MeshRenderer prevMeshRenderer = enemyFromThisRoom.GetChild(0).GetComponent<MeshRenderer>();
+        Debug.Log(prevMeshRenderer);
+
+        prevMeshRenderer.enabled = false;
+
 
 
 
