@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5776bc562fe5b404db6de6e4889a4ba5, type: 3}
       propertyPath: m_TagString
-      value: Freddie
+      value: Freddy
       objectReference: {fileID: 0}
     - target: {fileID: 5965656635930480476, guid: 5776bc562fe5b404db6de6e4889a4ba5, type: 3}
       propertyPath: m_IsActive
