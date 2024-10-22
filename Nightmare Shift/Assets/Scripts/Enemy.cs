@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
 
         if (currentRoom != null)
         {
+            Debug.Log("current room" + currentRoom.name);
             currentRoom.moveEnemy(this.gameObject);
         }
         else

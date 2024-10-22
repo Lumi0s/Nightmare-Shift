@@ -6,70 +6,57 @@ using UnityEditor;
 public class EnemyPosition
 {
     public GameObject enemy;
-    public Vector3 position;
+
+    public Transform transform;
+
 }
 
 public class Room : MonoBehaviour
 {
     public List<GameObject> enemies = new();
     public List<GameObject> connectedRooms = new();
-    public List<EnemyPosition> predefinedPositions = new();
-
-    private Dictionary<GameObject, Vector3> enemyPositions = new();
 
     void Start()
     {
-        foreach (EnemyPosition enemyPosition in predefinedPositions)
-        {
-            if (enemyPosition.enemy != null)
-            {
-                enemyPositions[enemyPosition.enemy] = enemyPosition.position;
-            }
-        }
 
-        // Clean up the enemies list to remove any null entries
-        enemies.RemoveAll(e => e == null);
-
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy != null)
-            {
-                Enemy enemyComponent = enemy.GetComponent<Enemy>();
-                if (enemyComponent != null)
-                {
-                    enemyComponent.currentRoom = this;
-                    if (!enemyPositions.ContainsKey(enemy))
-                    {
-                        enemyPositions[enemy] = enemy.transform.localPosition;
-                    }
-                }
-            }
-        }
     }
 
     public void moveEnemy(GameObject enemy, GameObject room = null)
     {
         if (enemy == null || !enemies.Contains(enemy)) return;
 
-        GameObject targetRoom = room ?? connectedRooms[Random.Range(0, connectedRooms.Count)];
+        var availableRooms = connectedRooms.FindAll(r =>
+        {
+            foreach (Transform child in r.transform)
+            {
+                if (child.CompareTag(enemy.tag))
+                {
+                    return true;
+                }
+            }
+            return false;
+        });
+        if (availableRooms.Count == 0) return;
+
+
+        GameObject targetRoom = room ?? availableRooms[Random.Range(0, availableRooms.Count - 1)];
+
+        Debug.Log(targetRoom.name);
+
         Room targetRoomComponent = targetRoom.GetComponent<Room>();
 
         enemies.Remove(enemy);
         targetRoomComponent.enemies.Add(enemy);
         enemy.GetComponent<Enemy>().currentRoom = targetRoomComponent;
+
+        Transform targetChild = targetRoom.transform.Find(enemy.tag);
+        Debug.Log(targetChild.name);
+        targetChild.gameObject.SetActive(true);
         enemy.transform.SetParent(targetRoom.transform);
+        this.transform.Find(enemy.tag).gameObject.SetActive(false);
 
-        if (targetRoomComponent.enemyPositions.TryGetValue(enemy, out Vector3 targetPosition))
-        {
-            enemy.transform.localPosition = targetPosition;
-        }
-        else
-        {
-            targetRoomComponent.enemyPositions[enemy] = enemy.transform.localPosition;
-        }
 
-        // Clean up the enemies list to remove any null entries
-        enemies.RemoveAll(e => e == null);
+
     }
 }
 
@@ -78,13 +65,12 @@ public class RoomEditor : Editor
 {
     SerializedProperty enemiesProperty;
     SerializedProperty connectedRoomsProperty;
-    SerializedProperty predefinedPositionsProperty;
+
 
     void OnEnable()
     {
         enemiesProperty = serializedObject.FindProperty("enemies");
         connectedRoomsProperty = serializedObject.FindProperty("connectedRooms");
-        predefinedPositionsProperty = serializedObject.FindProperty("predefinedPositions");
     }
 
     public override void OnInspectorGUI()
@@ -93,8 +79,6 @@ public class RoomEditor : Editor
 
         EditorGUILayout.PropertyField(enemiesProperty, true);
         EditorGUILayout.PropertyField(connectedRoomsProperty, true);
-        EditorGUILayout.PropertyField(predefinedPositionsProperty, new GUIContent("Predefined Positions"), true);
-
         serializedObject.ApplyModifiedProperties();
     }
 }

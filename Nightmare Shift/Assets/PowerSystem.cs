@@ -22,6 +22,7 @@ public class PowerSystem : MonoBehaviour
     void Update()
     {
         power -= Time.deltaTime * usage * 0.3f;
+        power = Mathf.Max(power, 0);
 
         powerUI.text = "Power: " + power.ToString("N0") + "%";
         usageUI.text = "Usage: " + usage.ToString();
