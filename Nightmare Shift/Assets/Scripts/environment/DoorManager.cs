@@ -22,7 +22,7 @@ public class DoorManager : MonoBehaviour
 
     void Start()
     {
-        slideDistance = transform.localScale.y;
+        slideDistance = transform.localScale.y * 2f;
         buttonCollider = Button.GetComponent<BoxCollider>();
         lightButtonCollider = lightButton.GetComponent<BoxCollider>();
         mainRoomManager = mainRoom.GetComponent<Room>();

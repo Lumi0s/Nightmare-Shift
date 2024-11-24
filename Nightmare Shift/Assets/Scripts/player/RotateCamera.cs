@@ -11,6 +11,6 @@ public class RotateCamera : MonoBehaviour
     {
         float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
         float rotationAngle = (mouseX - 0.5f) * 2 * maxAngle;
-        transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
+        transform.rotation = Quaternion.Euler(0, rotationAngle+180, 0);
     }
 }
