@@ -52381,6 +52381,8 @@ GameObject:
   - component: {fileID: 1315047029889967151}
   - component: {fileID: 3925314184764430217}
   - component: {fileID: 6897816654767198456}
+  - component: {fileID: 6897816654767198458}
+  - component: {fileID: 6897816654767198457}
   m_Layer: 0
   m_Name: BackStage
   m_TagString: Untagged
@@ -52403,6 +52405,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &6897816654767198457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897816654767198455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 0.2
+  blendAmount: 0.04
+--- !u!114 &6897816654767198458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897816654767198455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.01
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!33 &6902975760982531983
 MeshFilter:
   m_ObjectHideFlags: 0

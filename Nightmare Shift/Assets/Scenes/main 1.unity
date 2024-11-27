@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   connectedRooms: []
+  camera: {fileID: 0}
 --- !u!4 &16171378
 Transform:
   m_ObjectHideFlags: 0
@@ -1795,6 +1796,8 @@ GameObject:
   - component: {fileID: 285863964}
   - component: {fileID: 285863966}
   - component: {fileID: 285863965}
+  - component: {fileID: 285863968}
+  - component: {fileID: 285863967}
   m_Layer: 0
   m_Name: Kitchen
   m_TagString: Untagged
@@ -1876,6 +1879,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &285863967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285863963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &285863968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285863963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!1 &310520810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,7 +2559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13138f152f25936449dfd1dd520bed63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInterval: 5
+  moveInterval: 1
   currentRoom: {fileID: 0}
   chanceToMove: 1
 --- !u!4 &468585119 stripped
@@ -2585,6 +2619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   connectedRooms: []
+  camera: {fileID: 0}
 --- !u!1 &551419106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,6 +2652,7 @@ MonoBehaviour:
   enemies: []
   connectedRooms:
   - {fileID: 2114601488}
+  camera: {fileID: 9210497355868240243}
 --- !u!4 &551419108
 Transform:
   m_ObjectHideFlags: 0
@@ -3951,6 +3987,7 @@ MonoBehaviour:
   enemies: []
   connectedRooms:
   - {fileID: 1366259973}
+  camera: {fileID: 5954377517980494407}
 --- !u!4 &764911420
 Transform:
   m_ObjectHideFlags: 0
@@ -5655,6 +5692,7 @@ MonoBehaviour:
   enemies: []
   connectedRooms:
   - {fileID: 2114601488}
+  camera: {fileID: 285863963}
 --- !u!1 &996260835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5688,6 +5726,7 @@ MonoBehaviour:
   connectedRooms:
   - {fileID: 2086562713}
   - {fileID: 2114601488}
+  camera: {fileID: 3276893082764488966}
 --- !u!4 &996260837
 Transform:
   m_ObjectHideFlags: 0
@@ -7145,6 +7184,7 @@ MonoBehaviour:
   - {fileID: 468585117}
   connectedRooms:
   - {fileID: 2114601488}
+  camera: {fileID: 8708363866300894506}
 --- !u!1 &1242196947
 GameObject:
   m_ObjectHideFlags: 0
@@ -7949,6 +7989,7 @@ MonoBehaviour:
   enemies: []
   connectedRooms:
   - {fileID: 2114601488}
+  camera: {fileID: 6897816654767198455}
 --- !u!4 &1357425858
 Transform:
   m_ObjectHideFlags: 0
@@ -7999,6 +8040,7 @@ MonoBehaviour:
   connectedRooms:
   - {fileID: 764911418}
   - {fileID: 1558571637}
+  camera: {fileID: 8098031346649408005}
 --- !u!4 &1366259975
 Transform:
   m_ObjectHideFlags: 0
@@ -9702,6 +9744,7 @@ MonoBehaviour:
   enemies: []
   connectedRooms:
   - {fileID: 1366259973}
+  camera: {fileID: 2881078285962551462}
 --- !u!4 &1558571639
 Transform:
   m_ObjectHideFlags: 0
@@ -12647,6 +12690,7 @@ MonoBehaviour:
   enemies: []
   connectedRooms:
   - {fileID: 996260835}
+  camera: {fileID: 2658101486495799047}
 --- !u!4 &2086562715
 Transform:
   m_ObjectHideFlags: 0
@@ -12965,6 +13009,7 @@ MonoBehaviour:
   - {fileID: 551419106}
   - {fileID: 1220667193}
   - {fileID: 990119022}
+  camera: {fileID: 7145102263350920192}
 --- !u!4 &2114601490
 Transform:
   m_ObjectHideFlags: 0
@@ -22635,6 +22680,8 @@ GameObject:
   - component: {fileID: 6947521867212364803}
   - component: {fileID: 6763113509256946644}
   - component: {fileID: 6947521867212364804}
+  - component: {fileID: 6947521867212364806}
+  - component: {fileID: 6947521867212364805}
   m_Layer: 0
   m_Name: E.HallCorner
   m_TagString: Untagged
@@ -23165,6 +23212,8 @@ GameObject:
   - component: {fileID: 1190507276785749305}
   - component: {fileID: 7397567240846456190}
   - component: {fileID: 7397567240846456191}
+  - component: {fileID: 7397567240846456193}
+  - component: {fileID: 7397567240846456192}
   m_Layer: 0
   m_Name: SupplyCloset
   m_TagString: Untagged
@@ -24411,6 +24460,8 @@ GameObject:
   - component: {fileID: 2000801583026025826}
   - component: {fileID: 5799814562653842781}
   - component: {fileID: 5799814562653842782}
+  - component: {fileID: 5799814562653842784}
+  - component: {fileID: 5799814562653842783}
   m_Layer: 0
   m_Name: East_Hall
   m_TagString: Untagged
@@ -32522,6 +32573,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &5799814562653842783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276893082764488966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &5799814562653842784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276893082764488966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!23 &5813203656830432624
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33113,6 +33195,8 @@ GameObject:
   - component: {fileID: 4650552940764935644}
   - component: {fileID: 195019354895656847}
   - component: {fileID: 5954377517980494408}
+  - component: {fileID: 5954377517980494410}
+  - component: {fileID: 5954377517980494409}
   m_Layer: 0
   m_Name: W.HallCorner
   m_TagString: Untagged
@@ -33135,6 +33219,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &5954377517980494409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954377517980494407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &5954377517980494410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954377517980494407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!1 &5958772817988593583
 GameObject:
   m_ObjectHideFlags: 0
@@ -36483,6 +36598,8 @@ GameObject:
   - component: {fileID: 1315047029889967151}
   - component: {fileID: 3925314184764430217}
   - component: {fileID: 6897816654767198456}
+  - component: {fileID: 6897816654767198458}
+  - component: {fileID: 6897816654767198457}
   m_Layer: 0
   m_Name: BackStage
   m_TagString: Untagged
@@ -36505,6 +36622,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &6897816654767198457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897816654767198455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &6897816654767198458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897816654767198455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!33 &6902975760982531983
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36759,6 +36907,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &6947521867212364805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658101486495799047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &6947521867212364806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658101486495799047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!4 &6948014116538715092
 Transform:
   m_ObjectHideFlags: 0
@@ -37710,6 +37889,8 @@ GameObject:
   - component: {fileID: 5531000083379369594}
   - component: {fileID: 7348074455405886273}
   - component: {fileID: 7348074455405886274}
+  - component: {fileID: 7348074455405886276}
+  - component: {fileID: 7348074455405886275}
   m_Layer: 0
   m_Name: DinningArea
   m_TagString: Untagged
@@ -38617,6 +38798,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &7348074455405886275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145102263350920192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &7348074455405886276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145102263350920192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!23 &7359720907270866683
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38842,6 +39054,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &7397567240846456192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881078285962551462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &7397567240846456193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881078285962551462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!23 &7398937515581505017
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41212,6 +41455,7 @@ GameObject:
   - component: {fileID: 8231934167327742535}
   - component: {fileID: 8231934167327742536}
   - component: {fileID: 8231934167327742537}
+  - component: {fileID: 8231934167327742539}
   - component: {fileID: 8231934167327742538}
   m_Layer: 0
   m_Name: West_Hall
@@ -41551,7 +41795,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8098031346649408005}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
   m_Name: 
@@ -41567,7 +41811,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8098031346649408005}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
   m_Name: 
@@ -41584,21 +41828,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 8098031346649408005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a326367736a7b714895e976400c1154d, type: 3}
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
-  noiseMaterial: {fileID: 0}
-  noiseAmount: 0.5
-  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
-  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
-  linesMaterial: {fileID: 0}
-  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollingLinesShader: {fileID: 0}
+  lineTexture: {fileID: 0}
   scrollSpeed: 1
   blendAmount: 0.5
-  _camera: {fileID: 0}
-  _timer: 0
-  _noiseOffset: {x: 0, y: 0}
+--- !u!114 &8231934167327742539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098031346649408005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 0}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 0}
 --- !u!33 &8241578504132238032
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43310,6 +43561,8 @@ GameObject:
   - component: {fileID: 5700121868585351153}
   - component: {fileID: 8480374932450855318}
   - component: {fileID: 8708363866300894507}
+  - component: {fileID: 8708363866300894509}
+  - component: {fileID: 8708363866300894508}
   m_Layer: 0
   m_Name: ShowStage
   m_TagString: Untagged
@@ -43332,6 +43585,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &8708363866300894508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708363866300894506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &8708363866300894509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708363866300894506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!23 &8714234919864066598
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44791,6 +45075,8 @@ GameObject:
   - component: {fileID: 7289710261606849502}
   - component: {fileID: 1646748882457453443}
   - component: {fileID: 9210497355868240244}
+  - component: {fileID: 9210497355868240246}
+  - component: {fileID: 9210497355868240245}
   m_Layer: 0
   m_Name: RestRooms
   m_TagString: Untagged
@@ -44813,6 +45099,37 @@ MonoBehaviour:
   rotationSpeed: 5
   maxAngle: 5
   pauseDuration: 3
+--- !u!114 &9210497355868240245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210497355868240243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff598858a5febf54b99f8b65b90650ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollingLinesShader: {fileID: 4800000, guid: def4565cc13180740a95fc4a5ee8de47, type: 3}
+  lineTexture: {fileID: 2800000, guid: f24e814fa8ba72747b4676240b8e353e, type: 3}
+  scrollSpeed: 1
+  blendAmount: 0.5
+--- !u!114 &9210497355868240246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210497355868240243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748fa27b50d9d944848abf265eaf078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseShader: {fileID: 4800000, guid: 7b5580e05c2d50d418503e893e18d1b8, type: 3}
+  noiseAmount: 0.5
+  noiseTexture: {fileID: 2800000, guid: 706215fa94228d54ab8d8b5c1cf86910, type: 3}
 --- !u!4 &9218275221452419157
 Transform:
   m_ObjectHideFlags: 0
