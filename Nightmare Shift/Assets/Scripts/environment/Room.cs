@@ -56,16 +56,16 @@ public class Room : MonoBehaviour
                 break;
             }
         }
-        // Enable the MeshRenderer in the target child
-        MeshRenderer targetMeshRenderer = targetChild.GetChild(0).GetComponent<MeshRenderer>();
-        targetMeshRenderer.enabled = true;
-
+        // Enable all SkinnedMeshRenderers in the target child
+        SkinnedMeshRenderer[] targetMeshRenderers = targetChild.GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (var renderer in targetMeshRenderers)
+        {
+            renderer.enabled = true;
+        }
 
         enemy.transform.SetParent(targetRoom.transform);
 
-
-        // Disable the MeshRenderer in the previous room's enemy
-
+        // Disable all SkinnedMeshRenderers in the previous room's enemy
         Transform enemyFromThisRoom = null;
         foreach (Transform child in this.transform)
         {
@@ -76,14 +76,14 @@ public class Room : MonoBehaviour
             }
         }
 
-        MeshRenderer prevMeshRenderer = enemyFromThisRoom.GetChild(0).GetComponent<MeshRenderer>();
-        Debug.Log(prevMeshRenderer);
-
-        prevMeshRenderer.enabled = false;
-
-
-
-
+        if (enemyFromThisRoom != null)
+        {
+            SkinnedMeshRenderer[] previousMeshRenderers = enemyFromThisRoom.GetComponentsInChildren<SkinnedMeshRenderer>();
+            foreach (var renderer in previousMeshRenderers)
+            {
+                renderer.enabled = false;
+            }
+        }
     }
 }
 

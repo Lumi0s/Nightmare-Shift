@@ -5,12 +5,25 @@ using UnityEngine;
 public class RotateCamera : MonoBehaviour
 {
     public float maxAngle = 45f; 
+    [SerializeField] private float rotationSpeed;
+    private float currentAngle = 180f;
 
-    // Update is called once per frame
     void Update()
     {
         float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
-        float rotationAngle = (mouseX - 0.5f) * 2 * maxAngle;
-        transform.rotation = Quaternion.Euler(0, rotationAngle+180, 0);
+        float rotationAmount = 0f;
+
+        if (mouseX < 0.2f)
+        {
+            rotationAmount = -rotationSpeed * Time.deltaTime;
+        }
+        else if (mouseX > 0.8f)
+        {
+            rotationAmount = rotationSpeed * Time.deltaTime;
+        }
+
+        currentAngle += rotationAmount;
+        currentAngle = Mathf.Clamp(currentAngle, 180f - maxAngle, 180f + maxAngle);
+        transform.localRotation = Quaternion.Euler(0f, currentAngle, 0f);
     }
 }

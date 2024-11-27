@@ -24,6 +24,7 @@ public class CameraSystem : MonoBehaviour
             camera.SetActive(false);
         }
         cameraUI.SetActive(false);
+        SoundManager.Instance.PlaySound("Fan");
     }
 
    
@@ -34,9 +35,18 @@ public class CameraSystem : MonoBehaviour
             camerasOpen = !camerasOpen;
             ShowCamera();
             if(camerasOpen)
+            {
                 PowerSystem.Instance.usage++;
+                SoundManager.Instance.PlaySound("CamerasUp");
+                SoundManager.Instance.StopSound("Fan");
+            }
             else
+            {
                 PowerSystem.Instance.usage--;
+                SoundManager.Instance.PlaySound("CamerasDown");
+                SoundManager.Instance.StopSound("CamerasUp");
+                SoundManager.Instance.PlaySound("Fan");
+            }
 
         }
     }
@@ -48,6 +58,7 @@ public class CameraSystem : MonoBehaviour
             cameras[currentCam].SetActive(true);
             mainCamera.SetActive(false);
             cameraUI.SetActive(true);
+
 
         }
         else
@@ -63,5 +74,6 @@ public class CameraSystem : MonoBehaviour
         cameras[currentCam].SetActive(false);
         currentCam = camera;
         ShowCamera();
+        SoundManager.Instance.PlaySound("CamerasSwitch");
     }
 }

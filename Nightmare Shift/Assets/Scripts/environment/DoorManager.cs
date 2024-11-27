@@ -61,11 +61,13 @@ public class DoorManager : MonoBehaviour
                     {
                         lightObject.SetActive(!lightObject.activeSelf);
                         PowerSystem.Instance.usage--;
+                        SoundManager.Instance.StopSound("Light");
                     }
                     else
                     {
                         lightObject.SetActive(!lightObject.activeSelf);
                         PowerSystem.Instance.usage++;
+                        SoundManager.Instance.PlaySound("Light");
                     }
                 }
             }
@@ -81,6 +83,7 @@ public class DoorManager : MonoBehaviour
             isOpen = true;
             sideRoomManager.connectedRooms.Add(mainRoom);
             PowerSystem.Instance.usage--;
+            SoundManager.Instance.PlaySound("Door");
         }
     }
 
@@ -93,7 +96,7 @@ public class DoorManager : MonoBehaviour
             isOpen = false;
             sideRoomManager.connectedRooms.Remove(mainRoom);
             PowerSystem.Instance.usage++;
-
+            SoundManager.Instance.PlaySound("Door");
         }
     }
 
