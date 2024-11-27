@@ -18,25 +18,30 @@ public class Room : MonoBehaviour
     public List<GameObject> enemies = new();
     public List<GameObject> connectedRooms = new();
 
-    // public GameObject camera;
-    // private CCTVNoiseEffect cctvNoiseEffect;
+    public GameObject camera;
+    private CCTVNoiseEffect cctvNoiseEffect;
+
+    private float baseNoise;
 
     void Start()
     {
-        // if (camera != null)
-        //     cctvNoiseEffect = camera.GetComponent<CCTVNoiseEffect>();
+
+        if (camera != null)
+        {
+            cctvNoiseEffect = camera.GetComponent<CCTVNoiseEffect>();
+            baseNoise = cctvNoiseEffect.noiseAmount;
+        }
     }
 
-    // private IEnumerator SetNoiseForDuration(float duration)
-    // {
-    //     // if (GetComponent<Camera>() != null && cctvNoiseEffect != null)
-    //     // {
-    //     //     float baseNoise = cctvNoiseEffect.noiseAmount;
-    //     //     cctvNoiseEffect.noiseAmount = 1.0f;
-    //     //     yield return new WaitForSeconds(duration);
-    //     //     cctvNoiseEffect.noiseAmount = baseNoise; // Reset to default or desired value
-    //     // }
-    // }
+    private IEnumerator SetNoiseForDuration(float duration)
+    {
+        if (camera != null && cctvNoiseEffect != null)
+        {
+            cctvNoiseEffect.noiseAmount = 1.0f;
+            yield return new WaitForSeconds(duration);
+            cctvNoiseEffect.noiseAmount = baseNoise; // Reset to default or desired value
+        }
+    }
 
     public void moveEnemy(GameObject enemy, GameObject room = null)
     {
@@ -104,7 +109,8 @@ public class Room : MonoBehaviour
         }
 
         // Start the coroutine to set noise amount to 1 for 2 seconds
-        // StartCoroutine(SetNoiseForDuration(2.0f));
+        StartCoroutine(SetNoiseForDuration(2.0f));
+        targetRoomComponent.StartCoroutine(targetRoomComponent.SetNoiseForDuration(2.0f));
     }
 }
 
@@ -114,14 +120,14 @@ public class RoomEditor : Editor
     SerializedProperty enemiesProperty;
     SerializedProperty connectedRoomsProperty;
 
-    // SerializedProperty cameraProperty;
+    SerializedProperty cameraProperty;
 
 
     void OnEnable()
     {
         enemiesProperty = serializedObject.FindProperty("enemies");
         connectedRoomsProperty = serializedObject.FindProperty("connectedRooms");
-        // cameraProperty = serializedObject.FindProperty("camera");
+        cameraProperty = serializedObject.FindProperty("camera");
     }
 
     public override void OnInspectorGUI()
@@ -130,7 +136,7 @@ public class RoomEditor : Editor
 
         EditorGUILayout.PropertyField(enemiesProperty, true);
         EditorGUILayout.PropertyField(connectedRoomsProperty, true);
-        // EditorGUILayout.PropertyField(cameraProperty, true);
+        EditorGUILayout.PropertyField(cameraProperty, true);
         serializedObject.ApplyModifiedProperties();
 
     }
