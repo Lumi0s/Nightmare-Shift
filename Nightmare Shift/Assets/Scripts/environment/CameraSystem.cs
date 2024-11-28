@@ -6,15 +6,27 @@ using UnityEngine;
 public class CameraSystem : MonoBehaviour
 {
 
+    public static CameraSystem Instance { get; private set; }
     [SerializeField] private KeyCode openCameras;
     [SerializeField] private List<GameObject> cameras;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject cameraUI;
     private int currentCam = 0;
-    private bool camerasOpen;
+    public bool camerasOpen;
 
 
-
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
     void Start()
@@ -51,7 +63,7 @@ public class CameraSystem : MonoBehaviour
         }
     }
 
-    private void ShowCamera()
+    public void ShowCamera()
     {
         if(camerasOpen)
         {

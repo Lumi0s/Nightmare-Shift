@@ -42,4 +42,13 @@ public class GameManager : MonoBehaviour
         PowerSystem.Instance.powerUI.gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("GameOver");
     }
+
+    public void WinGame()
+    {
+        mainCamera.SetActive(false);
+        GameOverCamera.SetActive(true);
+        PowerSystem.Instance.usageUI.gameObject.SetActive(false);
+        PowerSystem.Instance.powerUI.gameObject.SetActive(false);
+        SoundManager.Instance.PlaySound("Win");
+    }
 }

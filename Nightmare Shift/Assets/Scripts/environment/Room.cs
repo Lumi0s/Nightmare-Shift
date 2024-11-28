@@ -64,8 +64,17 @@ public class Room : MonoBehaviour
         });
 
         if (availableRooms.Count == 0) return;
-
-        GameObject targetRoom = room ?? availableRooms[Random.Range(0, availableRooms.Count)];
+        
+        GameObject targetRoom;
+        
+        if(availableRooms.Exists(r => r.name == "Office"))
+        {
+            targetRoom = availableRooms.Find(r => r.name == "Office");
+        }
+        else
+        {
+            targetRoom = room ?? availableRooms[Random.Range(0, availableRooms.Count)];
+        }
         Room targetRoomComponent = targetRoom.GetComponent<Room>();
 
         enemies.Remove(enemy);

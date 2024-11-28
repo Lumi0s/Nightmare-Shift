@@ -57,6 +57,15 @@ public class Enemy : MonoBehaviour
     void Jumpscare()
     {
         GameManager.Instance.lostGame = true;
+        if (CameraSystem.Instance.camerasOpen)
+        {
+            CameraSystem.Instance.camerasOpen = false;
+            CameraSystem.Instance.ShowCamera();
+        }
+        if (PlaceholderWinningSystem.Instance.minigameActive)
+        {
+            PlaceholderWinningSystem.Instance.ShowUI();
+        }
         StartCoroutine(Shaking());
         jumpscareAnimation.SetActive(true);
         SoundManager.Instance.PlaySound("Jumpscare");
