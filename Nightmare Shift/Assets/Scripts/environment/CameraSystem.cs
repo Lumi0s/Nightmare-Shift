@@ -10,7 +10,7 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private KeyCode openCameras;
     [SerializeField] private List<GameObject> cameras;
     [SerializeField] private GameObject mainCamera;
-    [SerializeField] private GameObject cameraUI;
+    [SerializeField] public GameObject cameraUI;
     private int currentCam = 0;
     public bool camerasOpen;
 

@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
         GameOverCamera.SetActive(true);
         PowerSystem.Instance.usageUI.gameObject.SetActive(false);
         PowerSystem.Instance.powerUI.gameObject.SetActive(false);
+        CameraSystem.Instance.cameraUI.SetActive(false);
+        PlaceholderWinningSystem.Instance.minigameUI.SetActive(false);
+        PlaceholderWinningSystem.Instance.progressText.gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("GameOver");
     }
 

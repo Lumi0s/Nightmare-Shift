@@ -9,7 +9,7 @@ public class PlaceholderWinningSystem : MonoBehaviour
 
     public static PlaceholderWinningSystem Instance { get; private set; }
     [SerializeField] private KeyCode openUI;
-    [SerializeField] private GameObject minigameUI;
+    [SerializeField] public GameObject minigameUI;
     public TextMeshProUGUI progressText;
     private float progress = 0.0f;
     public bool minigameActive = false;
@@ -43,21 +43,13 @@ public class PlaceholderWinningSystem : MonoBehaviour
     public void ShowUI()
     {
             minigameActive = !minigameActive;
-            if (minigameActive)
-            {
-                PowerSystem.Instance.usage++;
-            }
-            else
-            {
-                PowerSystem.Instance.usage--;
-            }
             minigameUI.SetActive(minigameActive);
             SoundManager.Instance.PlaySound("CamerasDown");
     }
 
     public void IncreaseProgress()
     {
-        progress += Time.deltaTime*0.7f;
+        progress += Time.deltaTime*0.65f;
         progressText.text = "Progress: " + progress.ToString("N0") + "%";
         if (progress >= 100)
         {

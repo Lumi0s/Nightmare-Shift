@@ -22,9 +22,16 @@ public class PowerSystem : MonoBehaviour
     void Update()
     {
         power -= Time.deltaTime * usage * 0.3f;
+        power -= Time.deltaTime * 0.07f;
         power = Mathf.Max(power, 0);
 
         powerUI.text = "Power: " + power.ToString("N0") + "%";
         usageUI.text = "Usage: " + usage.ToString();
+
+        if (power <= 0)
+        {
+            GameManager.Instance.GameOver();
+            GameManager.Instance.lostGame = true;
+        }
     }
 }
