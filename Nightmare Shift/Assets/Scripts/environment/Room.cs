@@ -37,9 +37,13 @@ public class Room : MonoBehaviour
     {
         if (camera != null && cctvNoiseEffect != null)
         {
+            if(camera.activeSelf)
+            SoundManager.Instance.PlaySound("CameraGlitch");
             cctvNoiseEffect.noiseAmount = 1.0f;
             yield return new WaitForSeconds(duration);
             cctvNoiseEffect.noiseAmount = baseNoise; // Reset to default or desired value
+            if(camera.activeSelf)
+            SoundManager.Instance.StopSound("CameraGlitch");
         }
     }
 

@@ -10,6 +10,7 @@ public class RotateCamera : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.lostGame){return;}
         float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
         float rotationAmount = 0f;
 

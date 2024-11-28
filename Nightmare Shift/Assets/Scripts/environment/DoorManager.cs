@@ -9,7 +9,8 @@ public class DoorManager : MonoBehaviour
     [SerializeField] private GameObject lightObject;
     [SerializeField] private GameObject mainRoom;
     [SerializeField] private GameObject sideRoom;
-
+    [SerializeField] private GameObject enemyToTriggerSound; 
+ 
     public bool isOpen = false;
     public float slideDuration = 1f;
     private BoxCollider buttonCollider;
@@ -68,6 +69,10 @@ public class DoorManager : MonoBehaviour
                         lightObject.SetActive(!lightObject.activeSelf);
                         PowerSystem.Instance.usage++;
                         SoundManager.Instance.PlaySound("Light");
+                        if (sideRoomManager.enemies.Exists(enemy => enemy == enemyToTriggerSound))
+                        {
+                            SoundManager.Instance.PlaySound("DoorScare");
+                        }
                     }
                 }
             }

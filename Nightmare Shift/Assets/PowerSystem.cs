@@ -10,8 +10,8 @@ public class PowerSystem : MonoBehaviour
     public static PowerSystem Instance { get; private set; }
     public int usage = 0;
     private float power = 100;
-    [SerializeField] private TextMeshProUGUI powerUI;
-    [SerializeField] private TextMeshProUGUI usageUI;
+    public TextMeshProUGUI powerUI;
+    public TextMeshProUGUI usageUI;
 
     void Awake()
     {
