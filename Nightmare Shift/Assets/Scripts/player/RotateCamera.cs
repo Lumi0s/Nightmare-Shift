@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour
 {
-    public float maxAngle = 45f; 
+    public float maxAngle = 45f;
     [SerializeField] private float rotationSpeed;
-    private float currentAngle = 180f;
+    public float currentAngle = 180f;
 
     void Update()
     {
-        if (GameManager.Instance.lostGame){return;}
+        if (GameManager.Instance.lostGame) { return; }
         float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
         float rotationAmount = 0f;
 
