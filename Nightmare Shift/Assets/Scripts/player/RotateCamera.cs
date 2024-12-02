@@ -8,8 +8,19 @@ public class RotateCamera : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     public float currentAngle = 180f;
 
+
+    void Start()
+    {
+
+    }
+
     void Update()
     {
+        if (this.gameObject.GetComponent<MoveCamera>().isAtMonitor || this.gameObject.GetComponent<MoveCamera>().isMoving)
+        {
+            currentAngle = 180f;
+            return;
+        }
         if (GameManager.Instance.lostGame) { return; }
         float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
         float rotationAmount = 0f;

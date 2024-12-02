@@ -9,47 +9,26 @@ public class MoveCamera : MonoBehaviour
     private Vector3 monitorPosition;
     private Quaternion monitorRotation;
 
-    private bool movingToMonitor = false;
-    private bool isMoving = false;
-    private RotateCamera rotateCamera;
+    public bool isAtMonitor = false;
+    public bool isMoving = false;
 
-    public float transitionSpeed = 5f;
-    public float positionThreshold = 0.05f;
-    public float rotationThreshold = 1f;
-    public float maxTransitionTime = 2f;
+    public float transitionDuration = 2f;
 
-    // Add new field to store rotation
+    [SerializeField] private AnimationCurve positionCurve;
+    [SerializeField] private AnimationCurve rotationCurveX;  // Separate curve for X rotation
+    [SerializeField] private AnimationCurve rotationCurveY;  // Separate curve for Y rotation
+    [SerializeField] private AnimationCurve returnRotationCurveX; // Return X rotation
+    [SerializeField] private AnimationCurve returnRotationCurveY; // Return Y rotation
+
     private float lastYRotation;
 
     void Start()
     {
         basePosition = transform.localPosition;
         baseRotation = transform.localRotation;
-        rotateCamera = GetComponent<RotateCamera>();
 
         monitorPosition = new Vector3(-0.024f, 0.066f, -2.07f);
         monitorRotation = Quaternion.Euler(13.863f, 180.594f, 359.959f);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M) && !isMoving)
-        {
-            if (movingToMonitor)
-            {
-                StartCoroutine(MoveToPosition(basePosition, baseRotation, false));
-            }
-            else
-            {
-                if (rotateCamera != null)
-                {
-                    // Store current Y rotation before disabling
-                    lastYRotation = transform.localRotation.eulerAngles.y;
-                    rotateCamera.enabled = false;
-                }
-                StartCoroutine(MoveToPosition(monitorPosition, monitorRotation, true));
-            }
-        }
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition, Quaternion targetRotation, bool toMonitor)
@@ -58,52 +37,51 @@ public class MoveCamera : MonoBehaviour
         float elapsedTime = 0f;
 
         Vector3 startPosition = transform.localPosition;
-        Quaternion startRotation = transform.localRotation;
+        Vector3 startEuler = transform.localRotation.eulerAngles;
+        Vector3 targetEuler = targetRotation.eulerAngles;
 
-        // Store target euler angles
-        Vector3 targetEulerAngles = targetRotation.eulerAngles;
-        if (!toMonitor)
+        while (elapsedTime < transitionDuration)
         {
-            // Use stored Y rotation when returning from monitor
-            targetEulerAngles.y = lastYRotation;
-        }
+            float t = elapsedTime / transitionDuration;
+            float posT = positionCurve.Evaluate(t);
 
-        while (elapsedTime < maxTransitionTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / maxTransitionTime;
-            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+            // Separate X and Y rotation interpolation
+            float rotTX = toMonitor ? rotationCurveX.Evaluate(t) : returnRotationCurveX.Evaluate(t);
+            float rotTY = toMonitor ? rotationCurveY.Evaluate(t) : returnRotationCurveY.Evaluate(t);
 
-            transform.localPosition = Vector3.Lerp(startPosition, targetPosition, smoothT);
+            transform.localPosition = Vector3.Lerp(startPosition, targetPosition, posT);
 
-            Vector3 currentEuler = transform.localRotation.eulerAngles;
             Vector3 newEuler = new Vector3(
-                Mathf.LerpAngle(currentEuler.x, targetEulerAngles.x, smoothT),
-                Mathf.LerpAngle(currentEuler.y, targetEulerAngles.y, smoothT),
-                Mathf.LerpAngle(currentEuler.z, targetEulerAngles.z, smoothT)
+                Mathf.LerpAngle(startEuler.x, targetEuler.x, rotTX),
+                Mathf.LerpAngle(startEuler.y, targetEuler.y, rotTY),
+                startEuler.z  // Keep Z rotation unchanged
             );
+
             transform.localRotation = Quaternion.Euler(newEuler);
 
-            if (Vector3.Distance(transform.localPosition, targetPosition) <= positionThreshold &&
-                Quaternion.Angle(transform.localRotation, Quaternion.Euler(targetEulerAngles)) <= rotationThreshold)
-            {
-                break;
-            }
-
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         transform.localPosition = targetPosition;
-        transform.localRotation = Quaternion.Euler(targetEulerAngles);
+        transform.localRotation = targetRotation;
 
-        if (!toMonitor && rotateCamera != null)
-        {
-            // Update RotateCamera's current angle before re-enabling
-            rotateCamera.currentAngle = lastYRotation;
-            rotateCamera.enabled = true;
-        }
-
-        movingToMonitor = toMonitor;
+        isAtMonitor = toMonitor;
         isMoving = false;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M) && !isMoving)
+        {
+            if (isAtMonitor)
+            {
+                StartCoroutine(MoveToPosition(basePosition, baseRotation, false));
+            }
+            else
+            {
+                StartCoroutine(MoveToPosition(monitorPosition, monitorRotation, true));
+            }
+        }
     }
 }
