@@ -79,7 +79,7 @@ public class PlaceholderWinningSystem : MonoBehaviour
 
     public void ShowUI()
     {
-        if(mainCamera.GetComponent<MoveCamera>().isMoving)
+        if(mainCamera.GetComponent<MoveCamera>().isMoving || CameraSystem.Instance.camerasOpen)
         {
             return;
         }
