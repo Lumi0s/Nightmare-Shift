@@ -308,7 +308,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6984090718758350484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -6950,7 +6950,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8765,6 +8765,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3705654250254061778, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.88062
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705654250254061778, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -52
+      objectReference: {fileID: 0}
     - target: {fileID: 3746159823466982239, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -8860,6 +8868,22 @@ PrefabInstance:
     - target: {fileID: 6154863901419081370, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175065836008022000, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.834647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175065836008022000, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175065836008022000, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -977
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175065836008022000, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -186.6
       objectReference: {fileID: 0}
     - target: {fileID: 6399133798268458471, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_SizeDelta.y
@@ -9345,7 +9369,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17786,7 +17810,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4126821815250472411}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!33 &5387781051292054506
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27754,7 +27778,7 @@ MonoBehaviour:
   sfxSource: {fileID: 1942415186688940284}
   musicClips: []
   basicAttackSound: {fileID: 8300000, guid: a97c0a3ccdea3614cb6f3a328290f1e9, type: 3}
-  fireballAttackSound: {fileID: 8300000, guid: 53ab6d3726ab19941b67ce45ce032586, type: 3}
+  fireballAttackSound: {fileID: 8300000, guid: a97c0a3ccdea3614cb6f3a328290f1e9, type: 3}
   lightningAttackSound: {fileID: 8300000, guid: 6b8c9ebb883e07b4c82f28bdd07a38b1, type: 3}
   playerHitSound: {fileID: 8300000, guid: ba853eb0658e79d49a9ec0886de2c5c0, type: 3}
   playerDrinkSound: {fileID: 8300000, guid: 2e6efd69261701d4da8691945ec4e219, type: 3}

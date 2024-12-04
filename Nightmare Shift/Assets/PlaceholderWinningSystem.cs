@@ -79,11 +79,13 @@ public class PlaceholderWinningSystem : MonoBehaviour
 
     public void ShowUI()
     {
-        minigameActive = !minigameActive;
+        if(mainCamera.GetComponent<MoveCamera>().isMoving)
+        {
+            return;
+        }
         // minigameUI.SetActive(minigameActive);
-        minigameUI.GetComponentInChildren<SceneController>().CanvasVisibility(minigameActive);
+        minigameUI.GetComponentInChildren<SceneController>().Pause(minigameActive);
+        minigameActive = !minigameActive;
         // mainCamera.enabled = !minigameActive;
-        miniGameCamera.enabled = true;
-        SoundManager.Instance.PlaySound("CamerasDown");
     }
 }

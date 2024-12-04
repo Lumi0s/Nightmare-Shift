@@ -14,8 +14,8 @@ public class UIBoxesController : MonoBehaviour
     void Init()
     {
         leftBox.SetActivationState(false);
-        rightBox.SetActivationState(false);
-        topBox.SetActivationState(true);
+        rightBox.SetActivationState(true);
+        topBox.SetActivationState(false);
     }
 
     void Update()

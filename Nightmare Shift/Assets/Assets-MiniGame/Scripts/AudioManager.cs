@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private List<AudioClip> musicClips;
 
-    // DŸwiêki bohatera
+    // Dï¿½wiï¿½ki bohatera
     [SerializeField] private AudioClip basicAttackSound;
     [SerializeField] private AudioClip fireballAttackSound;
     [SerializeField] private AudioClip lightningAttackSound;
@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip playerDrinkSound;
     [SerializeField] private AudioClip playerDefenseSound;
 
-    // DŸwiêki przeciwnika
+    // Dï¿½wiï¿½ki przeciwnika
     [SerializeField] private AudioClip enemyAttackSound;
     [SerializeField] private AudioClip enemyHitSound;
 
@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Lista klipów muzycznych jest pusta.");
+            Debug.LogWarning("Lista klipï¿½w muzycznych jest pusta.");
         }
     }
 
@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Indeks klipu wykracza poza listê.");
+            Debug.LogWarning("Indeks klipu wykracza poza listï¿½.");
         }
     }
 
@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = 0;
         musicSource.Stop();
 
-        // Ustawienie na nastêpny klip
+        // Ustawienie na nastï¿½pny klip
         currentClipIndex = (currentClipIndex + 1) % musicClips.Count;
         PlayClip(currentClipIndex);
 
@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
     private IEnumerator FadeIn()
     {
         // Fade-in
-        float targetVolume = 0.1f;
+        float targetVolume = 0.01f;
         musicSource.volume = 0;
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)
         {
@@ -99,17 +99,17 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
         float startVolume = sfxSource.volume;
 
-        // Czekanie a¿ dŸwiêk siê rozpocznie, zanim zaczniemy go œciszaæ
+        // Czekanie aï¿½ dï¿½wiï¿½k siï¿½ rozpocznie, zanim zaczniemy go ï¿½ciszaï¿½
         yield return new WaitForSeconds(clip.length - fadeOutDuration);
 
-        // Stopniowe œciszanie dŸwiêku
+        // Stopniowe ï¿½ciszanie dï¿½wiï¿½ku
         for (float t = 0; t < fadeOutDuration; t += Time.deltaTime)
         {
             sfxSource.volume = Mathf.Lerp(startVolume, 0, t / fadeOutDuration);
             yield return null;
         }
 
-        sfxSource.volume = 0.7f;
+        sfxSource.volume = 0.1f;
     }
 
     public void PlayBasicAttackSound()
@@ -120,7 +120,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku podstawowego ataku.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku podstawowego ataku.");
         }
     }
 
@@ -132,7 +132,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku ataku kul¹ ognia.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku ataku kulï¿½ ognia.");
         }
     }
 
@@ -144,7 +144,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku ataku b³yskawic¹.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku ataku bï¿½yskawicï¿½.");
         }
     }
 
@@ -156,7 +156,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku obra¿eñ.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku obraï¿½eï¿½.");
         }
     }
 
@@ -168,7 +168,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku obra¿eñ.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku obraï¿½eï¿½.");
         }
     }
     public void PlayPlayerDefenseSound()
@@ -179,7 +179,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku obra¿eñ.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku obraï¿½eï¿½.");
         }
     }
 
@@ -191,7 +191,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku ataku przeciwnika.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku ataku przeciwnika.");
         }
     }
 
@@ -203,7 +203,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Brak przypisanego dŸwiêku obra¿eñ przeciwnika.");
+            Debug.LogWarning("Brak przypisanego dï¿½wiï¿½ku obraï¿½eï¿½ przeciwnika.");
         }
     }
 

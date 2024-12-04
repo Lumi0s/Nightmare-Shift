@@ -34,9 +34,11 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         pause = true;
-        startPanel.SetActive(true);
+        //startPanel.SetActive(true);
         GameObject mainCamera = GameObject.FindWithTag("MainCamera");
         mainCameraComponent = mainCamera.GetComponent<MoveCamera>();
+        canvas.enabled = true;
+        pausePanel.SetActive(true);
 
     }
 

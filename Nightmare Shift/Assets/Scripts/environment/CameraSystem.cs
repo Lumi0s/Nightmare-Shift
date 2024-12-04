@@ -42,6 +42,9 @@ public class CameraSystem : MonoBehaviour
    
     void Update()
     {
+        if (GameManager.Instance.lostGame) { return; }
+        if (PlaceholderWinningSystem.Instance.minigameActive) { return; }
+        
         if(Input.GetKeyDown(openCameras))
         {
             camerasOpen = !camerasOpen;

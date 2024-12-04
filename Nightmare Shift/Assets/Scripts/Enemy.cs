@@ -80,12 +80,12 @@ public class Enemy : MonoBehaviour
     {
         float elapsed = 0.0f;
         float duration = 1.0f;
-        Vector3 originalPos = mainCamera.transform.position;
+       
 
         while (elapsed < duration)
         {
 
-            mainCamera.transform.position = originalPos + UnityEngine.Random.insideUnitSphere * 0.05f;
+            mainCamera.transform.position = baseCameraPosition + UnityEngine.Random.insideUnitSphere * 0.05f;
             elapsed += Time.deltaTime;
             yield return null;
         }

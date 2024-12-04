@@ -31,7 +31,7 @@ public class ScreenEffects : MonoBehaviour
             blackScreenImage.color = new Color(0, 0, 0, 0);
         }
 
-        StartCoroutine(ActivateRandomEffects());
+        //StartCoroutine(ActivateRandomEffects());
     }
 
     void OnDestroy()

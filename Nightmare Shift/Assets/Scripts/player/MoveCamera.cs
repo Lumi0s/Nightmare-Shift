@@ -42,6 +42,7 @@ public class MoveCamera : MonoBehaviour
 
         while (elapsedTime < transitionDuration)
         {
+            if (GameManager.Instance.lostGame) { yield break; }
             float t = elapsedTime / transitionDuration;
             float posT = positionCurve.Evaluate(t);
 
@@ -74,7 +75,8 @@ public class MoveCamera : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) && !isMoving)
+        if (CameraSystem.Instance.camerasOpen) { return; }
+        if (Input.GetKeyDown(PlaceholderWinningSystem.Instance.openUI) && !isMoving)
         {
             if (isAtMonitor)
             {
