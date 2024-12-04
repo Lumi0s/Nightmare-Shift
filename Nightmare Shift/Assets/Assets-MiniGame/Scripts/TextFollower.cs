@@ -34,6 +34,9 @@ public class TextFollower : MonoBehaviour
 
     void Update()
     {
+        if (SceneController.Instance.pause)
+            return;
+
         if (currentLetterIndex >= currentText.Length)
         {
             return;

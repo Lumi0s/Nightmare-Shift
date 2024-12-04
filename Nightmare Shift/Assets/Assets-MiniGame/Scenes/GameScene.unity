@@ -16117,7 +16117,7 @@ MonoBehaviour:
   pausePanel: {fileID: 1361162443}
   endPanel: {fileID: 209453351}
   startPanel: {fileID: 7428033036616914913}
-  pause: 1
+  canvas: {fileID: 3282190632909733}
 --- !u!1 &4844661874927247737
 GameObject:
   m_ObjectHideFlags: 0

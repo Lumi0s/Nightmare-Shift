@@ -15,11 +15,13 @@ public class XBOXBoss : Creature
     const float weaponGrabDuration = 1f;
     const float weaponThrowDuration = 0.5f;
 
+    Coroutine attackCoroutine;
+
     override protected void Start()
     {
         maxHealth = xboxBossHealth;
         base.Start();
-        StartCoroutine(AttackCoroutine());
+        attackCoroutine = StartCoroutine(AttackCoroutine());
     }
 
     void Update()
@@ -69,17 +71,30 @@ public class XBOXBoss : Creature
     {
         while (true)
         {
+            while (SceneController.Instance.pause)
+            {
+                yield return null;
+            }
+
             yield return new WaitForSeconds(timeToAttack);
+
+            while (SceneController.Instance.pause)
+            {
+                yield return null;
+            }
+
             animator.SetTrigger(animationStates[Data.AnimationState.RegularAttack]);
             audioManager.PlayEnemyAttackSound();
 
             yield return new WaitForSeconds(weaponGrabDuration);
+
             weaponObject = Instantiate(weapon.gameObject, weaponHolder.transform);
             weaponObject.transform.localPosition = Vector3.zero;
             weaponObject.transform.localRotation = Quaternion.identity;
             weaponObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 
             yield return new WaitForSeconds(weaponThrowDuration);
+
             if (weaponObject != null)
             {
                 weaponObject.transform.parent = transform.parent;

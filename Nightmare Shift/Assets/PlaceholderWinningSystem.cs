@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Data;
@@ -50,7 +51,8 @@ public class PlaceholderWinningSystem : MonoBehaviour
         if (miniGame != null)
         {
             minigameUI = miniGame;
-            miniGame.SetActive(firstTime ? false : true);
+            minigameUI.transform.position = new Vector3(minigameUI.transform.position.x + 300, minigameUI.transform.position.y, minigameUI.transform.position.z);
+            minigameUI.GetComponentInChildren<SceneController>().CanvasVisibility(firstTime ? false : true);
             GameObject cameraGO = Data.FindInactiveObjectWithTag(Data.miniGameCameraTag);
 
             if (cameraGO != null)
@@ -75,7 +77,8 @@ public class PlaceholderWinningSystem : MonoBehaviour
     public void ShowUI()
     {
         minigameActive = !minigameActive;
-        minigameUI.SetActive(minigameActive);
+        // minigameUI.SetActive(minigameActive);
+        minigameUI.GetComponentInChildren<SceneController>().CanvasVisibility(minigameActive);
         mainCamera.enabled = !minigameActive;
         miniGameCamera.enabled = minigameActive;
         SoundManager.Instance.PlaySound("CamerasDown");

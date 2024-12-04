@@ -43,6 +43,11 @@ public class ScreenEffects : MonoBehaviour
     {
         while (true)
         {
+            while (SceneController.Instance.pause)
+            {
+                yield return null;
+            }
+
             float interval = Random.Range(minInterval, maxInterval);
             yield return new WaitForSeconds(interval);
 
@@ -57,6 +62,7 @@ public class ScreenEffects : MonoBehaviour
                     StartCoroutine(Blackout());
                     break;
             }
+
         }
     }
 
@@ -66,6 +72,11 @@ public class ScreenEffects : MonoBehaviour
 
         while (elapsedTime < shakeDuration)
         {
+            while (SceneController.Instance.pause)
+            {
+                yield return null;
+            }
+
             Vector3 randomOffset = Random.insideUnitSphere * shakeIntensity;
             camera.transform.position = originalCameraPosition + randomOffset;
 
@@ -93,6 +104,11 @@ public class ScreenEffects : MonoBehaviour
 
         while (elapsedTime < fadeDuration)
         {
+            while (SceneController.Instance.pause)
+            {
+                yield return null;
+            }
+
             color.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / fadeDuration);
             blackScreenImage.color = color;
             elapsedTime += Time.deltaTime;

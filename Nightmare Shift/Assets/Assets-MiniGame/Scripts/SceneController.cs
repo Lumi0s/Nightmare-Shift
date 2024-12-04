@@ -7,9 +7,11 @@ public class SceneController : MonoBehaviour
     [SerializeField] GameObject endPanel;
     [SerializeField] GameObject startPanel;
 
+    [SerializeField] Canvas canvas;
+
     public static SceneController Instance;
-    public bool pause = true;
-    public bool win { get; private set; }
+    public bool pause { get; private set; } = true;
+    public bool win { get; private set; } = default;
 
     bool isStartPanelActive = true;
 
@@ -28,7 +30,7 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0;
+        pause = true;
         startPanel.SetActive(true);
     }
 
@@ -37,7 +39,7 @@ public class SceneController : MonoBehaviour
         if (isStartPanelActive)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab)) && win == default)
         {
             Pause(true);
         }
@@ -45,7 +47,6 @@ public class SceneController : MonoBehaviour
 
     public void StartGame()
     {
-        Time.timeScale = 1;
         startPanel.SetActive(false);
         isStartPanelActive = false;
         pause = false;
@@ -54,7 +55,6 @@ public class SceneController : MonoBehaviour
     public void Pause(bool pause)
     {
         this.pause = pause;
-        Time.timeScale = pause ? 0 : 1;
 
         if (pausePanel == null)
         {
@@ -73,7 +73,6 @@ public class SceneController : MonoBehaviour
             return;
 
         endPanel.SetActive(true);
-        Time.timeScale = 0;
         pause = true;
 
         EndPanel endPanelComponent = endPanel.GetComponent<EndPanel>();
@@ -110,6 +109,11 @@ public class SceneController : MonoBehaviour
         {
             Debug.LogError("Minigame scene not found or not loaded");
         }
+    }
+
+    public void CanvasVisibility(bool visible)
+    {
+        canvas.enabled = visible;
     }
 
     public void QuitGame()
