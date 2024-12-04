@@ -14,11 +14,14 @@ public class Enemy : MonoBehaviour
     private GameObject mainCamera;
     [SerializeField]private GameObject jumpscareAnimation;
 
+    private Vector3 baseCameraPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         currentRoom = GetComponentInParent<Room>();
         mainCamera = GameObject.FindWithTag("MainCamera");
+        baseCameraPosition = mainCamera.transform.position;
     }
 
     // Update is called once per frames
@@ -70,6 +73,7 @@ public class Enemy : MonoBehaviour
         jumpscareAnimation.SetActive(true);
         SoundManager.Instance.PlaySound("Jumpscare");
         mainCamera.transform.rotation = Quaternion.Euler(0, 180, 0);
+        mainCamera.transform.position = baseCameraPosition;
     }
 
     IEnumerator Shaking()
