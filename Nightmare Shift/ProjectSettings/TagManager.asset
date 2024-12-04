@@ -8,6 +8,13 @@ TagManager:
   - Bonnie
   - Foxy
   - Chica
+  - pausePanel
+  - lightning
+  - SkyboxCamera
+  - minigame
+  - minigameCamera
+  - endMinigamePanel
+  - startPanel
   layers:
   - Default
   - TransparentFX

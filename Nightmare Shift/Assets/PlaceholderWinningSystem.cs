@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.Profiling;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static Data;
 
 public class PlaceholderWinningSystem : MonoBehaviour
 {
-
     public static PlaceholderWinningSystem Instance { get; private set; }
+
     [SerializeField] private KeyCode openUI;
+    // cannot serialize objects from different scenes, we're gonna find it in the hierarchy on Start()
     [SerializeField] public GameObject minigameUI;
-    public TextMeshProUGUI progressText;
-    private float progress = 0.0f;
+
     public bool minigameActive = false;
+
+    Camera mainCamera;
+    Camera miniGameCamera;
 
     void Awake()
     {
@@ -29,9 +30,40 @@ public class PlaceholderWinningSystem : MonoBehaviour
 
     void Start()
     {
-        
+        LoadMiniGame(true);
     }
-    // Update is called once per frame
+
+    public void LoadMiniGame(bool firstTime)
+    {
+        GameObject mainCameraGO = GameObject.FindWithTag("MainCamera");
+        mainCamera = mainCameraGO.GetComponent<Camera>();
+
+        SceneManager.LoadSceneAsync(Data.gameSceneName, LoadSceneMode.Additive).completed += (AsyncOperation op) =>
+        {
+            Initialize(firstTime);
+        };
+    }
+
+    void Initialize(bool firstTime)
+    {
+        GameObject miniGame = Data.FindInactiveObjectWithTag(Data.miniGameMainObjectTag);
+        if (miniGame != null)
+        {
+            minigameUI = miniGame;
+            miniGame.SetActive(firstTime ? false : true);
+            GameObject cameraGO = Data.FindInactiveObjectWithTag(Data.miniGameCameraTag);
+
+            if (cameraGO != null)
+                miniGameCamera = cameraGO.GetComponent<Camera>();
+            else
+                Debug.LogError("No minigame camera object found");
+        }
+        else
+        {
+            Debug.LogError("No minigame object found");
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(openUI))
@@ -42,20 +74,10 @@ public class PlaceholderWinningSystem : MonoBehaviour
 
     public void ShowUI()
     {
-            minigameActive = !minigameActive;
-            minigameUI.SetActive(minigameActive);
-            SoundManager.Instance.PlaySound("CamerasDown");
-    }
-
-    public void IncreaseProgress()
-    {
-        progress += Time.deltaTime*0.65f;
-        progressText.text = "Progress: " + progress.ToString("N0") + "%";
-        if (progress >= 100)
-        {
-            ShowUI();
-            GameManager.Instance.WinGame();
-            GameManager.Instance.lostGame = true;
-        }
+        minigameActive = !minigameActive;
+        minigameUI.SetActive(minigameActive);
+        mainCamera.enabled = !minigameActive;
+        miniGameCamera.enabled = minigameActive;
+        SoundManager.Instance.PlaySound("CamerasDown");
     }
 }

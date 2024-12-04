@@ -16,6 +16,9 @@ public class RotateCamera : MonoBehaviour
 
     void Update()
     {
+        if (Camera.main == null)
+            return;
+
         if (this.gameObject.GetComponent<MoveCamera>().isAtMonitor || this.gameObject.GetComponent<MoveCamera>().isMoving)
         {
             currentAngle = 180f;

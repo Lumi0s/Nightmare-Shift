@@ -17,12 +17,12 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         isHolding = false;
     }
 
-    void Update()
-    {
-        if (isHolding)
-        {
-            PlaceholderWinningSystem.Instance.IncreaseProgress();
-        }
-    }
+    //void Update()
+    //{
+    //    if (isHolding)
+    //    {
+    //        PlaceholderWinningSystem.Instance.IncreaseProgress();
+    //    }
+    //}
 }
 

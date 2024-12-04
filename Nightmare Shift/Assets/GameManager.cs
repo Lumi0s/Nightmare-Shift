@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void GameOver()
@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
         PowerSystem.Instance.powerUI.gameObject.SetActive(false);
         CameraSystem.Instance.cameraUI.SetActive(false);
         PlaceholderWinningSystem.Instance.minigameUI.SetActive(false);
-        PlaceholderWinningSystem.Instance.progressText.gameObject.SetActive(false);
         SoundManager.Instance.PlaySound("GameOver");
     }
 

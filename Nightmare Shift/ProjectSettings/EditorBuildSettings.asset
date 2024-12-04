@@ -4,5 +4,21 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Assets-MiniGame/Scenes/EndScene.unity
+    guid: 5ed092785b3b64c4db771646173fa609
+  - enabled: 1
+    path: Assets/Assets-MiniGame/Scenes/GameScene.unity
+    guid: 892ff43718ba3c343a24eec6f056152f
+  - enabled: 1
+    path: Assets/Assets-MiniGame/Scenes/IntroScene.unity
+    guid: 36e579e6f813ec342ab69f852ec67ce3
+  - enabled: 1
+    path: Assets/Assets-MiniGame/Scenes/MenuScene.unity
+    guid: 49e97117cf70879429c5630fdb803dad
+  - enabled: 1
+    path: Assets/Assets-MiniGame/Scenes/WinTextScene.unity
+    guid: 29089c07367275544b8ad8409f6e8ae8
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
