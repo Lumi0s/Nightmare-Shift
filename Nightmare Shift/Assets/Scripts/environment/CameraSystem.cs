@@ -14,6 +14,7 @@ public class CameraSystem : MonoBehaviour
     private int currentCam = 0;
     public bool camerasOpen;
 
+    MoveCamera moveCamera;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class CameraSystem : MonoBehaviour
         }
         cameraUI.SetActive(false);
         SoundManager.Instance.PlaySound("Fan");
+        moveCamera = mainCamera.GetComponent<MoveCamera>();
     }
 
    
@@ -44,7 +46,8 @@ public class CameraSystem : MonoBehaviour
     {
         if (GameManager.Instance.lostGame) { return; }
         if (PlaceholderWinningSystem.Instance.minigameActive) { return; }
-        
+        if (moveCamera.isMoving) { return; }
+
         if(Input.GetKeyDown(openCameras))
         {
             camerasOpen = !camerasOpen;
