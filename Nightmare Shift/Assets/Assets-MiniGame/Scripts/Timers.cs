@@ -33,22 +33,22 @@ public class Timers : MonoBehaviour
             case TimerType.Fireball:
                 remainingFireballTime = cooldownDuration;
                 isFireballRunning = true;
-                ActivateTimerText(timerFireball, "FIREBALL COOLDOWN: ");
+                ActivateTimerText(timerFireball, "FIRE: ");
                 break;
             case TimerType.Light:
                 remainingLightTime = cooldownDuration;
                 isLightRunning = true;
-                ActivateTimerText(timerLight, "LIGHTNING COOLDOWN: ");
+                ActivateTimerText(timerLight, "LIGHT: ");
                 break;
             case TimerType.Drink:
                 remainingDrinkTime = cooldownDuration;
                 isDrinkRunning = true;
-                ActivateTimerText(timerDrink, "DRINK POTION COOLDOWN: ");
+                ActivateTimerText(timerDrink, "POTION: ");
                 break;
             case TimerType.Defend:
                 remainingDefendTime = cooldownDuration;
                 isDefendRunning = true;
-                ActivateTimerText(timerDefend, "DEFENSE ACTIVE FOR: ");
+                ActivateTimerText(timerDefend, "DEFEND TIME: ");
                 break;
             default:
                 Debug.LogWarning("Wrong timer value");
