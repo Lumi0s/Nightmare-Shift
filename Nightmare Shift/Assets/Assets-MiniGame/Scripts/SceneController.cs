@@ -9,11 +9,14 @@ public class SceneController : MonoBehaviour
 
     [SerializeField] Canvas canvas;
 
+
     public static SceneController Instance;
     public bool pause { get; private set; } = true;
     public bool win { get; private set; } = default;
 
     bool isStartPanelActive = true;
+
+    private MoveCamera mainCameraComponent;
 
     void Awake()
     {
@@ -32,14 +35,21 @@ public class SceneController : MonoBehaviour
     {
         pause = true;
         startPanel.SetActive(true);
+        GameObject mainCamera = GameObject.FindWithTag("MainCamera");
+        mainCameraComponent = mainCamera.GetComponent<MoveCamera>();
+
     }
 
     void Update()
     {
+        if (mainCameraComponent.isMoving)
+        {
+            return;
+        }
         if (isStartPanelActive)
             return;
 
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab)) && win == default)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(PlaceholderWinningSystem.Instance.openUI)) && win == default)
         {
             Pause(true);
         }
@@ -47,6 +57,10 @@ public class SceneController : MonoBehaviour
 
     public void StartGame()
     {
+        if (mainCameraComponent.isMoving)
+        {
+            return;
+        }
         startPanel.SetActive(false);
         isStartPanelActive = false;
         pause = false;

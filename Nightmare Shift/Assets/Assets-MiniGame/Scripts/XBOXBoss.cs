@@ -4,10 +4,10 @@ using static Data;
 
 public class XBOXBoss : Creature
 {
-    [SerializeField] XBOXWeapon     weapon;
-    [SerializeField] GameObject     weaponHolder;
-    [SerializeField] LookAtTarget   lookAtTarget;
-    [SerializeField] AudioManager   audioManager;
+    [SerializeField] XBOXWeapon weapon;
+    [SerializeField] GameObject weaponHolder;
+    [SerializeField] LookAtTarget lookAtTarget;
+    [SerializeField] AudioManager audioManager;
 
     GameObject weaponObject;
 

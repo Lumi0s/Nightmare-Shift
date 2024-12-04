@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Assets-MiniGame/Scenes/EndScene.unity
     guid: 5ed092785b3b64c4db771646173fa609
   - enabled: 1
-    path: Assets/Assets-MiniGame/Scenes/GameScene.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 892ff43718ba3c343a24eec6f056152f
   - enabled: 1
     path: Assets/Assets-MiniGame/Scenes/IntroScene.unity

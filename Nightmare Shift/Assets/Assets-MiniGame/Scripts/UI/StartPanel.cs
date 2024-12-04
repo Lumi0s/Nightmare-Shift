@@ -10,6 +10,14 @@ public class StartPanel : MonoBehaviour
         playButton.onClick.AddListener(() => StartGame());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            StartGame();
+        }
+    }
+
     void StartGame()
     {
         SceneController.Instance.StartGame();

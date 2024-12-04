@@ -27,8 +27,8 @@ public class MoveCamera : MonoBehaviour
         basePosition = transform.localPosition;
         baseRotation = transform.localRotation;
 
-        monitorPosition = new Vector3(-0.024f, 0.066f, -2.07f);
-        monitorRotation = Quaternion.Euler(13.863f, 180.594f, 359.959f);
+        monitorPosition = new Vector3(-0.00999999978f, 0.0270000007f, -2.19300008f);
+        monitorRotation = Quaternion.Euler(7.068995f, 180f, 0f);
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition, Quaternion targetRotation, bool toMonitor)
@@ -69,6 +69,8 @@ public class MoveCamera : MonoBehaviour
         isAtMonitor = toMonitor;
         isMoving = false;
     }
+
+
 
     public void Update()
     {

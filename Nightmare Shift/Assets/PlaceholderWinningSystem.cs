@@ -7,9 +7,10 @@ public class PlaceholderWinningSystem : MonoBehaviour
 {
     public static PlaceholderWinningSystem Instance { get; private set; }
 
-    [SerializeField] private KeyCode openUI;
+    [SerializeField] public KeyCode openUI;
     // cannot serialize objects from different scenes, we're gonna find it in the hierarchy on Start()
     [SerializeField] public GameObject minigameUI;
+
 
     public bool minigameActive = false;
 
@@ -32,6 +33,7 @@ public class PlaceholderWinningSystem : MonoBehaviour
     void Start()
     {
         LoadMiniGame(true);
+
     }
 
     public void LoadMiniGame(bool firstTime)
@@ -51,7 +53,7 @@ public class PlaceholderWinningSystem : MonoBehaviour
         if (miniGame != null)
         {
             minigameUI = miniGame;
-            minigameUI.transform.position = new Vector3(minigameUI.transform.position.x + 300, minigameUI.transform.position.y, minigameUI.transform.position.z);
+            // minigameUI.transform.position = new Vector3(minigameUI.transform.position.x + 300, minigameUI.transform.position.y, minigameUI.transform.position.z);
             minigameUI.GetComponentInChildren<SceneController>().CanvasVisibility(firstTime ? false : true);
             GameObject cameraGO = Data.FindInactiveObjectWithTag(Data.miniGameCameraTag);
 
@@ -59,6 +61,7 @@ public class PlaceholderWinningSystem : MonoBehaviour
                 miniGameCamera = cameraGO.GetComponent<Camera>();
             else
                 Debug.LogError("No minigame camera object found");
+
         }
         else
         {
@@ -79,8 +82,8 @@ public class PlaceholderWinningSystem : MonoBehaviour
         minigameActive = !minigameActive;
         // minigameUI.SetActive(minigameActive);
         minigameUI.GetComponentInChildren<SceneController>().CanvasVisibility(minigameActive);
-        mainCamera.enabled = !minigameActive;
-        miniGameCamera.enabled = minigameActive;
+        // mainCamera.enabled = !minigameActive;
+        miniGameCamera.enabled = true;
         SoundManager.Instance.PlaySound("CamerasDown");
     }
 }
