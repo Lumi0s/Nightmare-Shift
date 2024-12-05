@@ -8,6 +8,7 @@ public class BasicWeapon : Weapon
     protected override float baseDamage => basicWeaponDmg;
     protected override float speed => 10f;
     protected override float lifeTime => 5f;
+    protected override float cooldown => 1.5f;
 
     public override void Init(GameObject source, GameObject target)
     {

@@ -69,9 +69,13 @@ public class Player : Creature
     #region CommandFunctions
     void BasicAttack()
     {
-        animator.SetTrigger(animationStates[Data.AnimationState.RegularAttack]);
-        InitWeapon(attackTypes.basicWeapon);
-        audioManager.PlayBasicAttackSound();
+        if (timer.IsReady(TimerType.Attack))
+        {
+            InitWeapon(attackTypes.basicWeapon);
+            animator.SetTrigger(animationStates[Data.AnimationState.RegularAttack]);
+            audioManager.PlayBasicAttackSound();
+            timer.StartTimer(attackTypes.basicWeapon.Cooldown, TimerType.Attack);
+        }
     }
 
     void AttackFireball()

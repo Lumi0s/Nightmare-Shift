@@ -3,16 +3,19 @@ using UnityEngine;
 
 public class Timers : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI timerBasicAttack;
     [SerializeField] TextMeshProUGUI timerFireball;
     [SerializeField] TextMeshProUGUI timerLight;
     [SerializeField] TextMeshProUGUI timerDrink;
     [SerializeField] TextMeshProUGUI timerDefend;
 
+    private float remainingAttackTime;
     private float remainingFireballTime;
     private float remainingLightTime;
     private float remainingDrinkTime;
     private float remainingDefendTime;
 
+    private bool isAttackRunning;
     private bool isFireballRunning;
     private bool isLightRunning;
     private bool isDrinkRunning;
@@ -23,13 +26,19 @@ public class Timers : MonoBehaviour
         Fireball = 0,
         Light,
         Drink,
-        Defend
+        Defend,
+        Attack
     }
 
     public void StartTimer(float cooldownDuration, TimerType value)
     {
         switch (value)
         {
+            case TimerType.Attack:
+                remainingAttackTime = cooldownDuration;
+                isAttackRunning = true;
+                ActivateTimerText(timerBasicAttack, "ATTACK: ");
+                break;
             case TimerType.Fireball:
                 remainingFireballTime = cooldownDuration;
                 isFireballRunning = true;
@@ -58,6 +67,7 @@ public class Timers : MonoBehaviour
 
     void Update()
     {
+        UpdateTimer(ref remainingAttackTime, ref isAttackRunning, timerBasicAttack);
         UpdateTimer(ref remainingFireballTime, ref isFireballRunning, timerFireball);
         UpdateTimer(ref remainingLightTime, ref isLightRunning, timerLight);
         UpdateTimer(ref remainingDrinkTime, ref isDrinkRunning, timerDrink);
@@ -99,6 +109,7 @@ public class Timers : MonoBehaviour
             TimerType.Light => !isLightRunning,
             TimerType.Drink => !isDrinkRunning,
             TimerType.Defend => !isDefendRunning,
+            TimerType.Attack => !isAttackRunning,
             _ => false
         };
     }

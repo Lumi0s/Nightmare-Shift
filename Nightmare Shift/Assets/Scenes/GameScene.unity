@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 103452107062718400}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028359, g: 0.22571385, b: 0.30692258, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6629228531474587197, guid: b3351096bd1c3e14f9bde0abb2a03ca9, type: 3}
   m_PrefabInstance: {fileID: 9171745171144464956}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &325564977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6299801771686848534, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+  m_PrefabInstance: {fileID: 2380104165218960332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &956749086 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 716870902529074968, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
@@ -8831,7 +8842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2303109251065472449, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -39.105
+      value: -137.315
       objectReference: {fileID: 0}
     - target: {fileID: 3016692064855148737, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: camera
@@ -8871,7 +8882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3606595104277886529, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -333.73502
+      value: -431.945
       objectReference: {fileID: 0}
     - target: {fileID: 3637629806834483655, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_IsActive
@@ -9027,7 +9038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5131097987831223815, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -235.525
+      value: -333.73502
       objectReference: {fileID: 0}
     - target: {fileID: 5583351051544020323, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_SizeDelta.x
@@ -9115,7 +9126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6208055079892118868, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137.315
+      value: -235.525
       objectReference: {fileID: 0}
     - target: {fileID: 6399133798268458471, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_SizeDelta.y
@@ -9181,6 +9192,10 @@ PrefabInstance:
       propertyPath: m_GlobalPointSize
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7621329145655153816, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
+      propertyPath: timerBasicAttack
+      value: 
+      objectReference: {fileID: 325564977}
     - target: {fileID: 7756724471309928087, guid: 1be9596905e4f584ba2f760b7856ffca, type: 3}
       propertyPath: m_fontSize
       value: 112.9
